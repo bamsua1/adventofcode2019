@@ -1,3 +1,8 @@
+from typing import Union
+
+from helpers.input_utils import read_file
+
+
 """
 Fuel required to launch a given module is based on its mass. Specifically,
 to find the fuel required for a module,
@@ -21,12 +26,7 @@ for all of the modules on your spacecraft?
 """
 
 
-def read_file() -> str:
-    with open('input.txt', 'r') as f:
-        return f.read()
-
-
-def calculate_fuel_requirements() -> int:
+def calculate() -> int:
     total = 0
     lines = read_file()
     for mass in lines.splitlines():
@@ -35,9 +35,9 @@ def calculate_fuel_requirements() -> int:
     return total
 
 
-def calculate_single(mass: str):
+def calculate_single(mass: Union[str, int]):
     return (int(mass) // 3) - 2
 
 
 if __name__ == '__main__':
-    print(calculate_fuel_requirements())
+    print(calculate())
